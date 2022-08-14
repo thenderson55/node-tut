@@ -3,6 +3,8 @@ const path = require("path")
 
 const server = express()
 
+server.use(express.static("./public"))
+
 server.get("/",(req, res) => {
   res.sendFile(path.resolve(__dirname, "./src/index.html"))
 })
