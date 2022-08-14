@@ -28,6 +28,18 @@ server.get("/api/products/:productID",(req, res) => {
   singleProduct ? res.json(singleProduct) : res.send("Product does not exist")
 })
 
+server.get("/api/v1/query",(req, res) => {
+  const { search, limit } = req.query
+
+  if(search && !limit){
+    const searchResult = products.filter(product => product.name.startsWith(search))
+    res.json(searchResult)
+  } else if (search && limit){
+    const limitResult = products.filter(product => product.name.startsWith(search)).slice(0, limit)
+    res.json(limitResult)
+  }
+})
+
 server.get("/about",(req, res) => {
   res.status(200).send("About Page")
 })
