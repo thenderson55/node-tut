@@ -11,7 +11,7 @@ const server = express()
 // })
 
 server.get("/",(req, res) => {
-  res.send('<h1>Home Page</h1><a href="/api/products">Products</>' )
+  res.send('<h1>Home</h1><a href="/api/products">Products</>' )
 })
 
 server.get("/api/products",(req, res) => {
