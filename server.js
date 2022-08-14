@@ -22,6 +22,12 @@ server.get("/api/products",(req, res) => {
   res.json(produstsWithoutDescription)
 })
 
+server.get("/api/products/:productID",(req, res) => {
+  const { productID } = req.params 
+  const singleProduct = products.find(item => item.id === Number(productID))
+  singleProduct ? res.json(singleProduct) : res.send("Product does not exist")
+})
+
 server.get("/about",(req, res) => {
   res.status(200).send("About Page")
 })
